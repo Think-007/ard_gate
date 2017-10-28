@@ -9,9 +9,6 @@
 
 package com.thinker.gate.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
@@ -25,14 +22,16 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.think.creator.domain.ProcessResult;
+import com.thinker.gate.util.ArdLog;
 
 /**
  * 
@@ -45,9 +44,12 @@ import com.think.creator.domain.ProcessResult;
  * @author LPF
  * 
  */
-@RestController
+@Controller
 @RequestMapping("/gate")
-public class LoginController {
+public class GateController {
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(GateController.class);
 
 	// 随机盐值
 	// @Value("${shiro.salt}")
@@ -57,7 +59,11 @@ public class LoginController {
 	private int hashIterations = 3;
 
 	@RequestMapping("/registration")
-	public ProcessResult registUser(String userName, String password) {
+	@ResponseBody
+	public ProcessResult registUser(String userName, String password,
+			String telNumber) {
+		ArdLog.info(logger, "enter registUser ", null, "userName" + userName
+				+ "password: " + password + "telnumber: " + telNumber);
 
 		// 1.校验参数
 
@@ -93,18 +99,18 @@ public class LoginController {
 		String password = request.getParameter("password");
 		System.out.println(userName);
 		System.out.println(password);
-		UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+		UsernamePasswordToken token = new UsernamePasswordToken(userName,
+				password);
 		token.setRememberMe(true);
 		Subject subject = SecurityUtils.getSubject();
 		try {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
-				return "redirect:/";
-			} else {
-				return "login";
+				return "redirect:/admin/home.html";
 			}
 		} catch (IncorrectCredentialsException e) {
-			msg = "登录密码错误. Password for account " + token.getPrincipal() + " was incorrect.";
+			msg = "登录密码错误. Password for account " + token.getPrincipal()
+					+ " was incorrect.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (ExcessiveAttemptsException e) {
@@ -112,19 +118,23 @@ public class LoginController {
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (LockedAccountException e) {
-			msg = "帐号已被锁定. The account for username " + token.getPrincipal() + " was locked.";
+			msg = "帐号已被锁定. The account for username " + token.getPrincipal()
+					+ " was locked.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (DisabledAccountException e) {
-			msg = "帐号已被禁用. The account for username " + token.getPrincipal() + " was disabled.";
+			msg = "帐号已被禁用. The account for username " + token.getPrincipal()
+					+ " was disabled.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (ExpiredCredentialsException e) {
-			msg = "帐号已过期. the account for username " + token.getPrincipal() + "  was expired.";
+			msg = "帐号已过期. the account for username " + token.getPrincipal()
+					+ "  was expired.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (UnknownAccountException e) {
-			msg = "帐号不存在. There is no user with username of " + token.getPrincipal();
+			msg = "帐号不存在. There is no user with username of "
+					+ token.getPrincipal();
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (UnauthorizedException e) {
@@ -132,7 +142,12 @@ public class LoginController {
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		}
-		return "login";
+		return "/";
+	}
+
+	public String checkOut() {
+
+		return "/";
 	}
 
 }

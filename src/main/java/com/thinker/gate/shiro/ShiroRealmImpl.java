@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 
- * 类简要描述
+ * shiro自定义鉴权
  * 
  * <p>
  * 类详细描述
@@ -39,13 +39,15 @@ import org.springframework.stereotype.Service;
 public class ShiroRealmImpl extends AuthorizingRealm {
 
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+	protected AuthorizationInfo doGetAuthorizationInfo(
+			PrincipalCollection principals) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+	protected AuthenticationInfo doGetAuthenticationInfo(
+			AuthenticationToken token) throws AuthenticationException {
 
 		UsernamePasswordToken authToken = (UsernamePasswordToken) token;
 
@@ -62,7 +64,8 @@ public class ShiroRealmImpl extends AuthorizingRealm {
 		// 数据库盐值
 		String sqlSalt = "333";
 
-		return new SimpleAuthenticationInfo(userName, password, ByteSource.Util.bytes(sqlSalt), getName());
+		return new SimpleAuthenticationInfo(userName, password,
+				ByteSource.Util.bytes(sqlSalt), getName());
 
 	}
 
