@@ -25,7 +25,7 @@ import com.thinker.gate.shiro.ShiroRealmImpl;
 
 /**
  * 
- * 类简要描述
+ * shiro权限配置
  * 
  * <p>
  * 类详细描述
@@ -39,11 +39,13 @@ public class ShiroConfig {
 
 	private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
+	// 自定义登录权限校验
 	@Bean(name = "shiroRealmImpl")
 	public ShiroRealmImpl getShiroRealm() {
 		return new ShiroRealmImpl();
 	}
 
+	// 缓存配置
 	@Bean(name = "shiroEhcacheManager")
 	public EhCacheManager getEhCacheManager() {
 		EhCacheManager em = new EhCacheManager();
@@ -51,11 +53,13 @@ public class ShiroConfig {
 		return em;
 	}
 
+	// 将生命周期交给boot管理
 	@Bean(name = "lifecycleBeanPostProcessor")
 	public LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
 		return new LifecycleBeanPostProcessor();
 	}
 
+	// 强制用cglib创建代理对象
 	@Bean
 	public DefaultAdvisorAutoProxyCreator getDefaultAdvisorAutoProxyCreator() {
 		DefaultAdvisorAutoProxyCreator daap = new DefaultAdvisorAutoProxyCreator();
@@ -63,6 +67,7 @@ public class ShiroConfig {
 		return daap;
 	}
 
+	// 核心管理器
 	@Bean(name = "securityManager")
 	public DefaultWebSecurityManager getDefaultWebSecurityManager() {
 		DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
@@ -71,6 +76,7 @@ public class ShiroConfig {
 		return dwsm;
 	}
 
+	// 核心安全适配器
 	@Bean
 	public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
 		AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
@@ -78,13 +84,14 @@ public class ShiroConfig {
 		return new AuthorizationAttributeSourceAdvisor();
 	}
 
+	// 过滤器
 	@Bean(name = "shiroFilter")
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
 		shiroFilterFactoryBean.setLoginUrl("/login");
-		shiroFilterFactoryBean.setSuccessUrl("/sa/index");
-		filterChainDefinitionMap.put("/sa/**", "authc");
+		shiroFilterFactoryBean.setSuccessUrl("/index");
+		filterChainDefinitionMap.put("/admin/**", "authc");
 		filterChainDefinitionMap.put("/**", "anon");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;

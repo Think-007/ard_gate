@@ -17,9 +17,12 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Authorizer;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 /**
  * 
@@ -32,23 +35,34 @@ import org.apache.shiro.util.ByteSource;
  * @author LPF
  * 
  */
-
+@Service
 public class ShiroRealmImpl extends AuthorizingRealm {
 
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(
-			PrincipalCollection principals) {
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(
-			AuthenticationToken token) throws AuthenticationException {
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
 		UsernamePasswordToken authToken = (UsernamePasswordToken) token;
 
-		return new SimpleAuthenticationInfo("lpf", "", getName());
+		String userName = authToken.getUsername();
+		String password = String.copyValueOf(authToken.getPassword());
+
+		// 数据库用户名
+		String sqlUserName = "18201410900";
+
+		if (!userName.equals(sqlUserName)) {
+			return null;
+		}
+
+		// 数据库盐值
+		String sqlSalt = "333";
+
+		return new SimpleAuthenticationInfo(userName, password, ByteSource.Util.bytes(sqlSalt), getName());
 
 	}
 

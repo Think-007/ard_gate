@@ -9,8 +9,10 @@
 
 package com.thinker.gate.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.DisabledAccountException;
@@ -24,10 +26,11 @@ import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.think.creator.domain.ProcessResult;
 
@@ -47,20 +50,13 @@ import com.think.creator.domain.ProcessResult;
 public class LoginController {
 
 	// 随机盐值
-	@Value("${shiro.salt}")
-	private String saltStr;
+	// @Value("${shiro.salt}")
+	private String saltStr = "333";
 	// 加盐次数
 	@Value("${salt.hashIterations}")
-	private int hashIterations;
+	private int hashIterations = 3;
 
-	public static void main(String[] args) {
-
-		LoginController loginController = new LoginController();
-		loginController.registUser("lpf", "123456");
-
-	}
-
-	@RequestMapping("/user_regist")
+	@RequestMapping("/registration")
 	public ProcessResult registUser(String userName, String password) {
 
 		// 1.校验参数
@@ -69,13 +65,18 @@ public class LoginController {
 
 		// 3.创建用户,并绑定信息
 
-		System.out.println(password);
+		ProcessResult processResult = new ProcessResult();
 		System.out.println(userName);
+		System.out.println(password);
+		System.out.println(saltStr);
+		System.out.println(hashIterations);
 
 		Md5Hash mh = new Md5Hash(password, saltStr, hashIterations);
 		// 打印最终结果
 		System.out.println(mh.toString());
-		return new ProcessResult();
+		processResult.setRetCode(ProcessResult.SUCCESS);
+		processResult.setRetMsg("ok");
+		return processResult;
 	}
 
 	/**
@@ -85,15 +86,14 @@ public class LoginController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/dologin")
+	@RequestMapping(value = "/authentication")
 	public String doLogin(HttpServletRequest request, Model model) {
 		String msg = "";
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		System.out.println(userName);
 		System.out.println(password);
-		UsernamePasswordToken token = new UsernamePasswordToken(userName,
-				password);
+		UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
 		token.setRememberMe(true);
 		Subject subject = SecurityUtils.getSubject();
 		try {
@@ -104,8 +104,7 @@ public class LoginController {
 				return "login";
 			}
 		} catch (IncorrectCredentialsException e) {
-			msg = "登录密码错误. Password for account " + token.getPrincipal()
-					+ " was incorrect.";
+			msg = "登录密码错误. Password for account " + token.getPrincipal() + " was incorrect.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (ExcessiveAttemptsException e) {
@@ -113,23 +112,19 @@ public class LoginController {
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (LockedAccountException e) {
-			msg = "帐号已被锁定. The account for username " + token.getPrincipal()
-					+ " was locked.";
+			msg = "帐号已被锁定. The account for username " + token.getPrincipal() + " was locked.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (DisabledAccountException e) {
-			msg = "帐号已被禁用. The account for username " + token.getPrincipal()
-					+ " was disabled.";
+			msg = "帐号已被禁用. The account for username " + token.getPrincipal() + " was disabled.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (ExpiredCredentialsException e) {
-			msg = "帐号已过期. the account for username " + token.getPrincipal()
-					+ "  was expired.";
+			msg = "帐号已过期. the account for username " + token.getPrincipal() + "  was expired.";
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (UnknownAccountException e) {
-			msg = "帐号不存在. There is no user with username of "
-					+ token.getPrincipal();
+			msg = "帐号不存在. There is no user with username of " + token.getPrincipal();
 			model.addAttribute("message", msg);
 			System.out.println(msg);
 		} catch (UnauthorizedException e) {
