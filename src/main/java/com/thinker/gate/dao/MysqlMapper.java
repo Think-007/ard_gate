@@ -15,12 +15,13 @@ package com.thinker.gate.dao;
  * 
  * <p>
  * 类详细描述
- * </p> 
-* 
+ * </p>
+ * 
  * @author LPF
  * 
  */
 
-public interface MysqlDao {
+public interface MysqlMapper {
 
+	public int test();
 }
