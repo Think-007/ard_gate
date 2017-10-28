@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thinker.gate.dao.ArdRoleMapper;
 import com.thinker.gate.dao.ArdUserMapper;
+import com.thinker.gate.dao.ArdUserRoleMapper;
 import com.thinker.gate.domain.ArdRole;
 import com.thinker.gate.domain.ArdUser;
+import com.thinker.gate.domain.ArdUserRole;
 import com.thinker.gate.domain.UserRegistParam;
 import com.thinker.gate.service.UserRegistService;
 
@@ -21,17 +23,16 @@ public class UserRegistServiceImpl implements UserRegistService {
 	private ArdUserMapper ardUserMapper;
 
 	@Resource
-	private ArdRoleMapper ardRoleMapper;
+	private ArdUserRoleMapper ardUserRoleMapper; 
 
 	@Override
 	@Transactional
-	public Map regitsAppUser(UserRegistParam userRegistParam, String salt,
-			ArdRole ardRole) {
+	public Map regitsUser(UserRegistParam userRegistParam, String salt,
+			ArdUserRole ardUserRole) {
 		// TODO Auto-generated method stub
 		ArdUser ardUser = new ArdUser();
 
 		ardUserMapper.insertArdUser(ardUser);
-		ardRoleMapper.insertArdRole(ardRole);
 
 		return null;
 	}

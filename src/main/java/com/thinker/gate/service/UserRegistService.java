@@ -3,6 +3,7 @@ package com.thinker.gate.service;
 import java.util.Map;
 
 import com.thinker.gate.domain.ArdRole;
+import com.thinker.gate.domain.ArdUserRole;
 import com.thinker.gate.domain.UserRegistParam;
 
 public interface UserRegistService {
@@ -13,7 +14,7 @@ public interface UserRegistService {
 	 * @param userRegistParam
 	 * @return
 	 */
-	public Map regitsAppUser(UserRegistParam userRegistParam, String salt,
-			ArdRole ardRole);
+	public Map regitsUser(UserRegistParam userRegistParam, String salt,
+			ArdUserRole ardUserRole);
 
 }

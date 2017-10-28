@@ -11,12 +11,12 @@ package com.thinker.gate.controller;
 
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.ExpiredCredentialsException;
@@ -36,6 +36,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.think.creator.domain.ProcessResult;
+import com.thinker.gate.domain.ArdUserRole;
+import com.thinker.gate.domain.UserRegistParam;
+import com.thinker.gate.service.UserRegistService;
 import com.thinker.gate.util.ArdLog;
 
 /**
@@ -63,28 +66,35 @@ public class GateController {
 	@Value("${salt.hashIterations}")
 	private int hashIterations = 3;
 
+	@Resource
+	private UserRegistService userRegistService;
+
 	@RequestMapping("/registration")
 	@ResponseBody
-	public ProcessResult registUser(String userName, String password,
-			String telNumber) {
-		ArdLog.info(logger, "enter registUser ", null, "userName" + userName
-				+ "password: " + password + "telnumber: " + telNumber);
+	public ProcessResult registUser(UserRegistParam userRegistParam) {
+		ArdLog.info(logger, "enter registUser ", null, "userRegistParam: "
+				+ userRegistParam);
+		ProcessResult processResult = new ProcessResult();
 
 		// 1.校验参数
 
 		// 2.密码加盐
 
-		// 3.创建用户,并绑定信息
-
-		ProcessResult processResult = new ProcessResult();
-		System.out.println(userName);
-		System.out.println(password);
+		ArdLog.debug(logger, "registUser", null, "salt: " + saltStr
+				+ "hashIterations: " + hashIterations);
 		System.out.println(saltStr);
 		System.out.println(hashIterations);
 
-		Md5Hash mh = new Md5Hash(password, saltStr, hashIterations);
-		// 打印最终结果
+		Md5Hash mh = new Md5Hash(userRegistParam.getPassword(), saltStr,
+				hashIterations);
 		System.out.println(mh.toString());
+
+		// 3.创建用户,并绑定信息
+
+		ArdUserRole ardUserRole = new ArdUserRole();
+
+		userRegistService.regitsUser(userRegistParam, saltStr, ardUserRole);
+
 		processResult.setRetCode(ProcessResult.SUCCESS);
 		processResult.setRetMsg("ok");
 		return processResult;
