@@ -12,10 +12,10 @@ public interface ArdUserMapper {
 	 */
 	public int insertArdUser(ArdUser ardUser);
 
-	public int deleteArdUser(ArdUser ardUser);
-
-	public int updateArdUser(ArdUser ardUser);
-
-	public int queryArdUser(ArdUser ardUser);
+//	public int deleteArdUser(ArdUser ardUser);
+//
+//	public int updateArdUser(ArdUser ardUser);
+//
+//	public int queryArdUser(ArdUser ardUser);
 
 }

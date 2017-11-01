@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinker.gate.dao.ArdUserMapper">
 
-	<insert id="registUser" parameterType="ArdUser">
+	<insert id="insertArdUser" parameterType="ArdUser">
 
-		insert into ard_user(
+<!-- 		insert into ard_user(
 		user_id,
 		username,
 		password,
@@ -16,7 +16,7 @@
 		password,
 		salt,
 		sex
-		)
+		) -->
 
 	</insert>
 

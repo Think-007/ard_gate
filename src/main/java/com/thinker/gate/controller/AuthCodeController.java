@@ -86,7 +86,7 @@ public class AuthCodeController {
 	 */
 	@RequestMapping(value = "/authentication", method = RequestMethod.GET)
 	public ProcessResult authSmsCode(String smsCode) {
-		ArdLog.debug(logger, "enter generateSmsCode", null, smsCode);
+		ArdLog.info(logger, "enter authSmsCode", null, smsCode);
 
 		ProcessResult processResult = new ProcessResult();
 		Session session = SecurityUtils.getSubject().getSession();
@@ -100,7 +100,7 @@ public class AuthCodeController {
 			processResult.setRetCode(ProcessResult.FAILED);
 			processResult.setRetMsg("failed");
 		}
-
+		ArdLog.info(logger, "finish authSmsCode", null, processResult);
 		return processResult;
 
 	}

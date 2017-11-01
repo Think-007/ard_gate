@@ -18,27 +18,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.DisabledAccountException;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.ExpiredCredentialsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.think.creator.domain.ProcessResult;
 import com.thinker.gate.domain.ArdUserRole;
 import com.thinker.gate.domain.UserRegistParam;
 import com.thinker.gate.service.UserRegistService;
+import com.thinker.gate.util.ArdError;
 import com.thinker.gate.util.ArdLog;
 
 /**
@@ -52,7 +50,7 @@ import com.thinker.gate.util.ArdLog;
  * @author LPF
  * 
  */
-@RestController
+@Controller
 @RequestMapping("/gate")
 public class GateController {
 
@@ -68,6 +66,13 @@ public class GateController {
 
 	@Resource
 	private UserRegistService userRegistService;
+
+	@RequestMapping("/homepage")
+	public String toHome() {
+
+		return "/home";
+
+	}
 
 	@RequestMapping("/registration")
 	@ResponseBody
@@ -109,9 +114,12 @@ public class GateController {
 	 * @throws IOException
 	 * @throws ServletException
 	 */
-	@RequestMapping(value = "/authentication")
-	public void doLogin(HttpServletRequest request,
+	@RequestMapping(value = "/app_authentication")
+	@ResponseBody
+	public ProcessResult doLogin(HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+
+		ProcessResult result = new ProcessResult();
 		try {
 			String msg = "";
 			String userName = request.getParameter("userName");
@@ -125,32 +133,19 @@ public class GateController {
 			try {
 				subject.login(token);
 				if (subject.isAuthenticated()) {
-					request.getRequestDispatcher("/admin/home.html").forward(
-							request, response);
-					return;
+
+					result.setRetCode(ProcessResult.SUCCESS);
+
+					return result;
 				}
 			} catch (IncorrectCredentialsException e) {
 				msg = "登录密码错误. Password for account " + token.getPrincipal()
 						+ " was incorrect.";
 				model.addAttribute("message", msg);
 				System.out.println(msg);
-			} catch (ExcessiveAttemptsException e) {
-				msg = "登录失败次数过多";
-				model.addAttribute("message", msg);
-				System.out.println(msg);
-			} catch (LockedAccountException e) {
-				msg = "帐号已被锁定. The account for username "
-						+ token.getPrincipal() + " was locked.";
-				model.addAttribute("message", msg);
-				System.out.println(msg);
 			} catch (DisabledAccountException e) {
-				msg = "帐号已被禁用. The account for username "
+				msg = "帐号已被注销. The account for username "
 						+ token.getPrincipal() + " was disabled.";
-				model.addAttribute("message", msg);
-				System.out.println(msg);
-			} catch (ExpiredCredentialsException e) {
-				msg = "帐号已过期. the account for username " + token.getPrincipal()
-						+ "  was expired.";
 				model.addAttribute("message", msg);
 				System.out.println(msg);
 			} catch (UnknownAccountException e) {
@@ -158,21 +153,48 @@ public class GateController {
 						+ token.getPrincipal();
 				model.addAttribute("message", msg);
 				System.out.println(msg);
-			} catch (UnauthorizedException e) {
-				msg = "您没有得到相应的授权！" + e.getMessage();
-				model.addAttribute("message", msg);
-				System.out.println(msg);
 			}
-			response.sendRedirect("/index.html");
+			result.setRetCode(ProcessResult.FAILED);
 
 		} catch (Throwable t) {
+			result.setRetCode(ProcessResult.FAILED);
+			result.setErrorCode(ArdError.EXCEPTION);
+			result.setErrorDesc(ArdError.EXCEPTION_MSG);
 			t.printStackTrace();
 		}
+
+		return result;
 	}
 
+	/**
+	 * web端登录地址
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/web_authentication")
+	public ModelAndView webLogin() {
+
+		ModelAndView mv = new ModelAndView();
+
+		mv.setViewName("/admin/mainpage");
+		return mv;
+	}
+
+	@RequestMapping("/signout_req")
 	public String checkOut() {
 
-		return "redirect:index.html";
+		SecurityUtils.getSubject().logout();
+		
+		return "/gate/homepage";
+	}
+
+	@RequestMapping("/password_reset")
+	public ProcessResult resetPassword() {
+
+		ProcessResult result = new ProcessResult();
+
+		return result;
+
 	}
 
 }
