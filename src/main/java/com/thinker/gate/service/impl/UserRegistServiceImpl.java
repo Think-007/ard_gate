@@ -1,5 +1,6 @@
 package com.thinker.gate.service.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -23,18 +24,28 @@ public class UserRegistServiceImpl implements UserRegistService {
 	private ArdUserMapper ardUserMapper;
 
 	@Resource
-	private ArdUserRoleMapper ardUserRoleMapper; 
+	private ArdUserRoleMapper ardUserRoleMapper;
 
 	@Override
 	@Transactional
-	public Map regitsUser(UserRegistParam userRegistParam, String salt,
-			ArdUserRole ardUserRole) {
+	public Map<String, Object> regitsUser(UserRegistParam userRegistParam, String salt, ArdUserRole ardUserRole)
+			throws Exception {
 		// TODO Auto-generated method stub
 		ArdUser ardUser = new ArdUser();
+		ardUser.setUserId(4);
+		ardUser.setUserName(userRegistParam.getUserName());
+		ardUser.setPassword(userRegistParam.getPassword());
+		ardUser.setSalt(salt);
+
+		ardUserRole.setUserId(ardUser.getUserId());
 
 		ardUserMapper.insertArdUser(ardUser);
-
-		return null;
+		ardUserRoleMapper.insertAruUserRole(ardUserRole);
+		Map<String, Object> userInfo = new HashMap<String, Object>();
+		userInfo.put("userid", ardUser.getUserId());
+		userInfo.put("username", ardUser.getUserName());
+		userInfo.put("role", ardUserRole.getRoleId());
+		return userInfo;
 	}
 
 }

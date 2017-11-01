@@ -14,7 +14,7 @@ public interface UserRegistService {
 	 * @param userRegistParam
 	 * @return
 	 */
-	public Map regitsUser(UserRegistParam userRegistParam, String salt,
-			ArdUserRole ardUserRole);
+	public Map<String, Object> regitsUser(UserRegistParam userRegistParam, String salt, ArdUserRole ardUserRole)
+			throws Exception;
 
 }

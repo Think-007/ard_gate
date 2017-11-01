@@ -32,7 +32,7 @@ public class ArdUser implements Serializable {
 	// 盐值
 	private String salt;
 
-	// 性别 0男 1女
+	// 性别 0未知 1男 2女
 	private int sex;
 
 	// 用户状态 0正常 -1注销 1锁定

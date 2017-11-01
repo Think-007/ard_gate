@@ -4,19 +4,17 @@
 
 	<insert id="insertArdUser" parameterType="ArdUser">
 
-<!-- 		insert into ard_user(
+		insert into ard_user(
 		user_id,
 		username,
 		password,
-		salt,
-		sex)
+		salt)
 		values(
-		userId,
-		userName,
-		password,
-		salt,
-		sex
-		) -->
+		#{userId},
+		#{userName},
+		#{password},
+		#{salt}
+		)
 
 	</insert>
 

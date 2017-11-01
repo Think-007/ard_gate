@@ -4868,3 +4868,538 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template "opera
 2017-11-01 17:01:57.433  INFO 6168 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2017-11-01 17:01:57.450  INFO 6168 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 9090 (http)
 2017-11-01 17:01:57.452  INFO 6168 --- [restartedMain] com.thinker.gate.ArdGateApplication      : Started ArdGateApplication in 0.862 seconds (JVM running for 1836.311)
+2017-11-01 19:56:34.450  INFO 9912 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 9912 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 19:56:34.453  INFO 9912 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 19:56:35.292  INFO 9912 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 19:56:35 CST 2017]; root of context hierarchy
+2017-11-01 19:56:38.699  INFO 9912 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 19:56:39.806  INFO 9912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 19:56:41.315  INFO 9912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:56:41.335  INFO 9912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$18662442] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:56:41.365  INFO 9912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:56:41.596  INFO 9912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:56:41.598  INFO 9912 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 19:56:41.638  INFO 9912 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 19:56:41.639  INFO 9912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:56:44.267  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 19:56:35 CST 2017]; root of context hierarchy
+2017-11-01 19:56:44.498  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 19:56:44.500  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 19:56:44.500  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 19:56:44.504  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 19:56:44.504  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 19:56:44.505  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 19:56:44.505  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 19:56:44.505  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 19:56:44.506  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 19:56:44.507  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 19:56:44.510  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 19:56:44.511  INFO 9912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 19:56:44.550  INFO 9912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 19:56:44.609  INFO 9912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 19:56:44.609  INFO 9912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 19:56:44.716  INFO 9912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 19:56:45.347  INFO 9912 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 19:56:46.396  INFO 9912 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 12.978 seconds (JVM running for 15.846)
+2017-11-01 19:56:49.733 ERROR 9912 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_31]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408) ~[na:1.8.0_31]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:989) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:341) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2189) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2222) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2017) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:779) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_31]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408) ~[na:1.8.0_31]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:389) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.23.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) [spring-jdbc-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) [spring-jdbc-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:82) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:68) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:336) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:84) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185) [mybatis-3.4.5.jar:3.4.5]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) [mybatis-spring-1.3.1.jar:1.3.1]
+	at com.sun.proxy.$Proxy79.insert(Unknown Source) [na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) [mybatis-3.4.5.jar:3.4.5]
+	at com.sun.proxy.$Proxy80.insertArdUser(Unknown Source) [na:na]
+	at com.thinker.gate.ArdGateApplicationTests.contextLoads(ArdGateApplicationTests.java:26) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:na]
+Caused by: java.net.UnknownHostException: localhsot
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:1.8.0_31]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907) ~[na:1.8.0_31]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302) ~[na:1.8.0_31]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255) ~[na:1.8.0_31]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171) ~[na:1.8.0_31]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105) ~[na:1.8.0_31]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:188) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:300) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	... 72 common frames omitted
+
+2017-11-01 19:56:49.835  INFO 9912 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 19:56:35 CST 2017]; root of context hierarchy
+2017-11-01 19:57:19.470  INFO 6872 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 6872 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 19:57:19.474  INFO 6872 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 19:57:19.835  INFO 6872 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 19:57:19 CST 2017]; root of context hierarchy
+2017-11-01 19:57:20.862  INFO 6872 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 19:57:21.156  INFO 6872 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 19:57:22.420  INFO 6872 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:57:22.438  INFO 6872 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2f7b86ba] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:57:22.470  INFO 6872 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:57:22.672  INFO 6872 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:57:22.673  INFO 6872 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 19:57:22.715  INFO 6872 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 19:57:22.716  INFO 6872 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 19:57:24.799  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 19:57:19 CST 2017]; root of context hierarchy
+2017-11-01 19:57:24.934  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 19:57:24.936  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 19:57:24.937  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 19:57:24.941  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 19:57:24.941  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 19:57:24.942  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 19:57:24.942  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 19:57:24.942  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 19:57:24.943  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 19:57:24.944  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 19:57:24.947  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 19:57:24.948  INFO 6872 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 19:57:24.996  INFO 6872 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 19:57:25.055  INFO 6872 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 19:57:25.055  INFO 6872 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 19:57:25.154  INFO 6872 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 19:57:25.671  INFO 6872 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 19:57:26.370  INFO 6872 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.289 seconds (JVM running for 8.288)
+2017-11-01 19:57:27.247  INFO 6872 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2017-11-01 19:57:27.287  INFO 6872 --- [main] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2017-11-01 19:57:27.308  INFO 6872 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 19:57:19 CST 2017]; root of context hierarchy
+2017-11-01 20:15:53.827  INFO 8336 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 8336 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 20:15:53.830  INFO 8336 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 20:15:54.134  INFO 8336 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:15:54 CST 2017]; root of context hierarchy
+2017-11-01 20:15:55.130  INFO 8336 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 20:15:55.491  INFO 8336 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 20:15:56.777  INFO 8336 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:15:56.792  INFO 8336 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$dc81ee95] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:15:56.822  INFO 8336 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:15:56.989  INFO 8336 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:15:56.991  INFO 8336 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 20:15:57.022  INFO 8336 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 20:15:57.023  INFO 8336 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:15:59.097  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:15:54 CST 2017]; root of context hierarchy
+2017-11-01 20:15:59.246  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 20:15:59.249  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 20:15:59.250  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 20:15:59.254  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 20:15:59.254  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 20:15:59.255  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 20:15:59.255  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 20:15:59.256  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 20:15:59.256  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 20:15:59.258  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 20:15:59.261  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 20:15:59.262  INFO 8336 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 20:15:59.318  INFO 8336 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 20:15:59.365  INFO 8336 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:15:59.365  INFO 8336 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:15:59.477  INFO 8336 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:16:00.013  INFO 8336 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 20:16:00.861  INFO 8336 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.454 seconds (JVM running for 8.445)
+2017-11-01 20:16:01.813  INFO 8336 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:15:54 CST 2017]; root of context hierarchy
+2017-11-01 20:18:48.402  INFO 8876 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 8876 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 20:18:48.405  INFO 8876 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 20:18:48.859  INFO 8876 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:18:48 CST 2017]; root of context hierarchy
+2017-11-01 20:18:49.657  INFO 8876 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 20:18:50.033  INFO 8876 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 20:18:51.356  INFO 8876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:18:51.375  INFO 8876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$823e72aa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:18:51.406  INFO 8876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:18:51.614  INFO 8876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:18:51.615  INFO 8876 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 20:18:51.645  INFO 8876 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 20:18:51.646  INFO 8876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:18:53.720  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:18:48 CST 2017]; root of context hierarchy
+2017-11-01 20:18:53.863  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 20:18:53.864  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 20:18:53.865  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 20:18:53.869  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 20:18:53.870  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 20:18:53.870  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 20:18:53.871  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 20:18:53.871  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 20:18:53.871  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 20:18:53.873  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 20:18:53.876  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 20:18:53.877  INFO 8876 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 20:18:53.932  INFO 8876 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 20:18:53.982  INFO 8876 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:18:53.982  INFO 8876 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:18:54.091  INFO 8876 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:18:54.630  INFO 8876 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 20:18:55.373  INFO 8876 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.661 seconds (JVM running for 8.662)
+2017-11-01 20:18:55.979 ERROR 8876 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown database 'ardcharacterencoding=utf8&usessl=true'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_31]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408) ~[na:1.8.0_31]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.Util.getInstance(Util.java:408) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:943) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:873) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1710) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1226) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2191) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2222) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2017) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:779) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_31]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408) ~[na:1.8.0_31]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:389) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.23.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) [spring-jdbc-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) [spring-jdbc-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:82) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:68) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:336) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:84) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185) [mybatis-3.4.5.jar:3.4.5]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) [mybatis-spring-1.3.1.jar:1.3.1]
+	at com.sun.proxy.$Proxy79.insert(Unknown Source) [na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) [mybatis-3.4.5.jar:3.4.5]
+	at com.sun.proxy.$Proxy80.insertArdUser(Unknown Source) [na:na]
+	at com.thinker.gate.ArdGateApplicationTests.contextLoads(ArdGateApplicationTests.java:26) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:na]
+
+2017-11-01 20:18:56.013  INFO 8876 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:18:48 CST 2017]; root of context hierarchy
+2017-11-01 20:19:24.758  INFO 6392 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 6392 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 20:19:24.761  INFO 6392 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 20:19:25.104  INFO 6392 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:19:25 CST 2017]; root of context hierarchy
+2017-11-01 20:19:26.152  INFO 6392 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 20:19:26.512  INFO 6392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 20:19:27.788  INFO 6392 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:19:27.809  INFO 6392 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c311f497] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:19:27.838  INFO 6392 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:19:28.024  INFO 6392 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:19:28.026  INFO 6392 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 20:19:28.056  INFO 6392 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 20:19:28.057  INFO 6392 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:19:30.111  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:19:25 CST 2017]; root of context hierarchy
+2017-11-01 20:19:30.255  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 20:19:30.256  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 20:19:30.259  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 20:19:30.263  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 20:19:30.264  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 20:19:30.264  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 20:19:30.265  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 20:19:30.265  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 20:19:30.266  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 20:19:30.267  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 20:19:30.270  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 20:19:30.271  INFO 6392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 20:19:30.324  INFO 6392 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 20:19:30.382  INFO 6392 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:19:30.382  INFO 6392 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:19:30.493  INFO 6392 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:19:31.059  INFO 6392 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 20:19:31.837  INFO 6392 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.471 seconds (JVM running for 8.416)
+2017-11-01 20:19:32.435 ERROR 6392 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown database 'ardÃ¯Â¼ÂŸcharacterencoding=utf8&usessl=true'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_31]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408) ~[na:1.8.0_31]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.Util.getInstance(Util.java:408) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:943) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:873) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1710) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1226) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2191) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2222) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2017) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:779) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_31]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408) ~[na:1.8.0_31]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:389) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330) ~[mysql-connector-java-5.1.44.jar:5.1.44]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.23.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.23.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) [spring-jdbc-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) [spring-jdbc-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:82) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:68) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:336) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:84) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185) [mybatis-3.4.5.jar:3.4.5]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) [mybatis-spring-1.3.1.jar:1.3.1]
+	at com.sun.proxy.$Proxy79.insert(Unknown Source) [na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278) [mybatis-spring-1.3.1.jar:1.3.1]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57) [mybatis-3.4.5.jar:3.4.5]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) [mybatis-3.4.5.jar:3.4.5]
+	at com.sun.proxy.$Proxy80.insertArdUser(Unknown Source) [na:na]
+	at com.thinker.gate.ArdGateApplicationTests.contextLoads(ArdGateApplicationTests.java:26) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191) [spring-test-4.3.12.RELEASE.jar:4.3.12.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:na]
+
+2017-11-01 20:19:32.488  INFO 6392 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:19:25 CST 2017]; root of context hierarchy
+2017-11-01 20:20:01.937  INFO 5576 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 5576 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 20:20:01.941  INFO 5576 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 20:20:02.304  INFO 5576 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:20:02 CST 2017]; root of context hierarchy
+2017-11-01 20:20:03.245  INFO 5576 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 20:20:03.567  INFO 5576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 20:20:04.793  INFO 5576 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:04.808  INFO 5576 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c311f497] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:04.840  INFO 5576 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:05.052  INFO 5576 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:05.054  INFO 5576 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 20:20:05.089  INFO 5576 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 20:20:05.091  INFO 5576 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:07.057  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:20:02 CST 2017]; root of context hierarchy
+2017-11-01 20:20:07.191  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 20:20:07.192  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 20:20:07.193  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 20:20:07.197  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 20:20:07.198  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 20:20:07.198  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 20:20:07.199  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 20:20:07.199  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 20:20:07.200  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 20:20:07.201  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 20:20:07.204  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 20:20:07.205  INFO 5576 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 20:20:07.258  INFO 5576 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 20:20:07.310  INFO 5576 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:20:07.311  INFO 5576 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:20:07.443  INFO 5576 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:20:07.989  INFO 5576 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 20:20:08.724  INFO 5576 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.182 seconds (JVM running for 8.153)
+2017-11-01 20:20:09.737  INFO 5576 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2017-11-01 20:20:09.787  INFO 5576 --- [main] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2017-11-01 20:20:09.809  INFO 5576 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:20:02 CST 2017]; root of context hierarchy
+2017-11-01 20:20:31.562  INFO 2056 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 2056 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 20:20:31.566  INFO 2056 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 20:20:31.890  INFO 2056 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:20:31 CST 2017]; root of context hierarchy
+2017-11-01 20:20:32.907  INFO 2056 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 20:20:33.251  INFO 2056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 20:20:34.499  INFO 2056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:34.519  INFO 2056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$79f46a1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:34.548  INFO 2056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:34.749  INFO 2056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:34.751  INFO 2056 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 20:20:34.791  INFO 2056 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 20:20:34.793  INFO 2056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:20:36.856  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:20:31 CST 2017]; root of context hierarchy
+2017-11-01 20:20:36.987  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 20:20:36.989  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 20:20:36.989  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 20:20:36.993  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 20:20:36.993  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 20:20:36.994  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 20:20:36.994  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 20:20:36.995  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 20:20:36.995  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 20:20:36.996  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 20:20:36.999  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 20:20:37.000  INFO 2056 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 20:20:37.045  INFO 2056 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 20:20:37.099  INFO 2056 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:20:37.100  INFO 2056 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:20:37.209  INFO 2056 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:20:37.752  INFO 2056 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 20:20:38.453  INFO 2056 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.299 seconds (JVM running for 8.223)
+2017-11-01 20:20:39.129  INFO 2056 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2017-11-01 20:20:39.168  INFO 2056 --- [main] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2017-11-01 20:20:39.200  INFO 2056 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:20:31 CST 2017]; root of context hierarchy
+2017-11-01 20:21:23.038  INFO 8204 --- [main] c.thinker.gate.ArdGateApplicationTests   : Starting ArdGateApplicationTests on DESKTOP-4V8P2LO with PID 8204 (started by LPF in G:\IDEA_Files\IDEA_WORKSPACE_U\workspace1\ard_gate)
+2017-11-01 20:21:23.042  INFO 8204 --- [main] c.thinker.gate.ArdGateApplicationTests   : The following profiles are active: dev
+2017-11-01 20:21:23.847  INFO 8204 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:21:23 CST 2017]; root of context hierarchy
+2017-11-01 20:21:24.545  INFO 8204 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [config/shiro/shiro-config.xml]
+2017-11-01 20:21:24.912  INFO 8204 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-11-01 20:21:26.150  INFO 8204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroDbRealm' of type [com.thinker.gate.shiro.ShiroRealmImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:21:26.167  INFO 8204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c30d03b8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:21:26.198  INFO 8204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:21:26.370  INFO 8204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroEhcacheManager' of type [org.apache.shiro.cache.ehcache.EhCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:21:26.371  INFO 8204 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Cache with name 'com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache' does not yet exist.  Creating now.
+2017-11-01 20:21:26.403  INFO 8204 --- [main] o.a.shiro.cache.ehcache.EhCacheManager   : Added EhCache named [com.thinker.gate.shiro.ShiroRealmImpl.authorizationCache]
+2017-11-01 20:21:26.404  INFO 8204 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-11-01 20:21:28.415  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:21:23 CST 2017]; root of context hierarchy
+2017-11-01 20:21:28.549  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/authentication],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.authSmsCode(java.lang.String)
+2017-11-01 20:21:28.551  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/smscode],methods=[GET]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.AuthCodeController.generateSmsCode(java.lang.String)
+2017-11-01 20:21:28.551  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/code/securcode],methods=[GET]}" onto public void com.thinker.gate.controller.AuthCodeController.generateSecureCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Throwable
+2017-11-01 20:21:28.555  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/app_authentication]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.doLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,org.springframework.ui.Model)
+2017-11-01 20:21:28.555  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/signout_req]}" onto public java.lang.String com.thinker.gate.controller.GateController.checkOut()
+2017-11-01 20:21:28.556  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/web_authentication]}" onto public org.springframework.web.servlet.ModelAndView com.thinker.gate.controller.GateController.webLogin()
+2017-11-01 20:21:28.556  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/password_reset]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.resetPassword()
+2017-11-01 20:21:28.556  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/registration]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.GateController.registUser(com.thinker.gate.domain.UserRegistParam)
+2017-11-01 20:21:28.557  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/gate/homepage]}" onto public java.lang.String com.thinker.gate.controller.GateController.toHome()
+2017-11-01 20:21:28.558  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/operation/article_publish]}" onto public com.think.creator.domain.ProcessResult com.thinker.gate.controller.OperateController.publisArticle()
+2017-11-01 20:21:28.560  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-01 20:21:28.561  INFO 8204 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-01 20:21:28.606  INFO 8204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-11-01 20:21:28.657  INFO 8204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:21:28.658  INFO 8204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:21:28.771  INFO 8204 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-11-01 20:21:29.362  INFO 8204 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-11-01 20:21:30.081  INFO 8204 --- [main] c.thinker.gate.ArdGateApplicationTests   : Started ArdGateApplicationTests in 7.436 seconds (JVM running for 8.368)
+2017-11-01 20:21:30.742  INFO 8204 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2017-11-01 20:21:30.782  INFO 8204 --- [main] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2017-11-01 20:21:30.805  INFO 8204 --- [Thread-6] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@101952da: startup date [Wed Nov 01 20:21:23 CST 2017]; root of context hierarchy

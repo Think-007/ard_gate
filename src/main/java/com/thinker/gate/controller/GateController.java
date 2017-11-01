@@ -10,6 +10,7 @@
 package com.thinker.gate.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -32,12 +33,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import com.think.creator.domain.ProcessResult;
 import com.thinker.gate.domain.ArdUserRole;
 import com.thinker.gate.domain.UserRegistParam;
 import com.thinker.gate.service.UserRegistService;
 import com.thinker.gate.util.ArdError;
 import com.thinker.gate.util.ArdLog;
+
+import ch.qos.logback.classic.spi.ThrowableProxyVO;
 
 /**
  * 
@@ -54,15 +58,14 @@ import com.thinker.gate.util.ArdLog;
 @RequestMapping("/gate")
 public class GateController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(GateController.class);
+	private static final Logger logger = LoggerFactory.getLogger(GateController.class);
 
 	// 随机盐值
-	// @Value("${shiro.salt}")
-	private String saltStr = "333";
+	@Value("${shiro.salt}")
+	private String saltStr;
 	// 加盐次数
 	@Value("${salt.hashIterations}")
-	private int hashIterations = 3;
+	private int hashIterations;
 
 	@Resource
 	private UserRegistService userRegistService;
@@ -77,31 +80,53 @@ public class GateController {
 	@RequestMapping("/registration")
 	@ResponseBody
 	public ProcessResult registUser(UserRegistParam userRegistParam) {
-		ArdLog.info(logger, "enter registUser ", null, "userRegistParam: "
-				+ userRegistParam);
+		ArdLog.info(logger, "enter registUser ", null, "userRegistParam: " + userRegistParam);
 		ProcessResult processResult = new ProcessResult();
 
-		// 1.校验参数
+		try {
+			// 1.校验参数
 
-		// 2.密码加盐
+			// 2.密码加盐
 
-		ArdLog.debug(logger, "registUser", null, "salt: " + saltStr
-				+ "hashIterations: " + hashIterations);
-		System.out.println(saltStr);
-		System.out.println(hashIterations);
+			ArdLog.debug(logger, "registUser", null, "salt: " + saltStr + "hashIterations: " + hashIterations);
+			System.out.println(saltStr);
+			System.out.println(hashIterations);
 
-		Md5Hash mh = new Md5Hash(userRegistParam.getPassword(), saltStr,
-				hashIterations);
-		System.out.println(mh.toString());
+			Md5Hash mh = new Md5Hash(userRegistParam.getPassword(), saltStr, hashIterations);
+			System.out.println(mh.toString());
 
-		// 3.创建用户,并绑定信息
+			// 3.创建用户,并绑定信息
 
-		ArdUserRole ardUserRole = new ArdUserRole();
+			ArdUserRole ardUserRole = new ArdUserRole();
 
-		userRegistService.regitsUser(userRegistParam, saltStr, ardUserRole);
+			Map userInfo = userRegistService.regitsUser(userRegistParam, saltStr, ardUserRole);
 
-		processResult.setRetCode(ProcessResult.SUCCESS);
-		processResult.setRetMsg("ok");
+			// 4.shiro授权用户
+			UsernamePasswordToken token = new UsernamePasswordToken(userRegistParam.getUserName(),
+					userRegistParam.getPassword());
+			token.setRememberMe(true);
+			Subject subject = SecurityUtils.getSubject();
+			subject.login(token);
+
+			processResult.setRetCode(ProcessResult.SUCCESS);
+			processResult.setRetMsg("ok");
+			processResult.setRetObj(userInfo);
+		} catch (MySQLIntegrityConstraintViolationException e) {
+
+			processResult.setRetCode(ProcessResult.FAILED);
+			processResult.setRetMsg("failed");
+			processResult.setErrorCode(ArdError.NAME_REPEAT);
+			ArdLog.error(logger, "registUser error", null, null, e);
+			e.printStackTrace();
+		} catch (Throwable t) {
+			processResult.setRetCode(ProcessResult.FAILED);
+			processResult.setErrorCode(ArdError.EXCEPTION);
+			processResult.setErrorDesc(ArdError.EXCEPTION_MSG);
+			ArdLog.error(logger, "registUser error", null, null, t);
+			t.printStackTrace();
+		}
+		ArdLog.info(logger, "finish registUser ", null, "processresult: " + processResult);
+
 		return processResult;
 	}
 
@@ -116,8 +141,7 @@ public class GateController {
 	 */
 	@RequestMapping(value = "/app_authentication")
 	@ResponseBody
-	public ProcessResult doLogin(HttpServletRequest request,
-			HttpServletResponse response, Model model) {
+	public ProcessResult doLogin(HttpServletRequest request, HttpServletResponse response, Model model) {
 
 		ProcessResult result = new ProcessResult();
 		try {
@@ -126,8 +150,7 @@ public class GateController {
 			String password = request.getParameter("password");
 			System.out.println(userName);
 			System.out.println(password);
-			UsernamePasswordToken token = new UsernamePasswordToken(userName,
-					password);
+			UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
 			token.setRememberMe(true);
 			Subject subject = SecurityUtils.getSubject();
 			try {
@@ -139,18 +162,15 @@ public class GateController {
 					return result;
 				}
 			} catch (IncorrectCredentialsException e) {
-				msg = "登录密码错误. Password for account " + token.getPrincipal()
-						+ " was incorrect.";
+				msg = "登录密码错误. Password for account " + token.getPrincipal() + " was incorrect.";
 				model.addAttribute("message", msg);
 				System.out.println(msg);
 			} catch (DisabledAccountException e) {
-				msg = "帐号已被注销. The account for username "
-						+ token.getPrincipal() + " was disabled.";
+				msg = "帐号已被注销. The account for username " + token.getPrincipal() + " was disabled.";
 				model.addAttribute("message", msg);
 				System.out.println(msg);
 			} catch (UnknownAccountException e) {
-				msg = "帐号不存在. There is no user with username of "
-						+ token.getPrincipal();
+				msg = "帐号不存在. There is no user with username of " + token.getPrincipal();
 				model.addAttribute("message", msg);
 				System.out.println(msg);
 			}
@@ -181,11 +201,10 @@ public class GateController {
 	}
 
 	@RequestMapping("/signout_req")
-	public String checkOut() {
+	public void checkOut() {
 
 		SecurityUtils.getSubject().logout();
-		
-		return "/gate/homepage";
+
 	}
 
 	@RequestMapping("/password_reset")
