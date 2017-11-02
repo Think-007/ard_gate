@@ -13,6 +13,7 @@ public class OperateController {
 	@RequestMapping("/article_publish")
 	@ResponseBody
 	public ProcessResult publisArticle() {
+
 		ProcessResult result = new ProcessResult();
 
 		return result;
