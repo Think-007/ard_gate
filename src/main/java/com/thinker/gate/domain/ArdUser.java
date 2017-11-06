@@ -35,7 +35,7 @@ public class ArdUser implements Serializable {
 	// 性别 0未知 1男 2女
 	private int sex;
 
-	// 用户状态 0正常 -1注销 1锁定
+	// 用户状态 0正常 1实名 2锁定 -1注销
 	private int status;
 
 	// 用户级别
