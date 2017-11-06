@@ -16,6 +16,7 @@ import com.thinker.gate.domain.ArdUser;
 import com.thinker.gate.domain.ArdUserRole;
 import com.thinker.gate.domain.UserRegistParam;
 import com.thinker.gate.service.UserRegistService;
+import com.thinker.gate.util.TokenUtil;
 
 @Service
 public class UserRegistServiceImpl implements UserRegistService {
@@ -32,7 +33,7 @@ public class UserRegistServiceImpl implements UserRegistService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		ArdUser ardUser = new ArdUser();
-		ardUser.setUserId(4);
+		ardUser.setUserId(Math.random() * 1000000);
 		ardUser.setUserName(userRegistParam.getUserName());
 		ardUser.setPassword(userRegistParam.getPassword());
 		ardUser.setSalt(salt);
@@ -41,6 +42,7 @@ public class UserRegistServiceImpl implements UserRegistService {
 
 		ardUserMapper.insertArdUser(ardUser);
 		ardUserRoleMapper.insertAruUserRole(ardUserRole);
+
 		Map<String, Object> userInfo = new HashMap<String, Object>();
 		userInfo.put("userid", ardUser.getUserId());
 		userInfo.put("username", ardUser.getUserName());
