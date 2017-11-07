@@ -2,6 +2,8 @@ package com.thinker.gate.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,8 @@ public class AuthCodeController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(AuthCodeController.class);
+
+	private static final Map<String, String> redis = new HashMap<String, String>();
 
 	@RequestMapping(value = "/securcode", method = RequestMethod.GET)
 	public void generateSecureCode(HttpServletRequest request,
@@ -61,16 +65,25 @@ public class AuthCodeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/smscode", method = RequestMethod.GET)
-	public ProcessResult generateSmsCode(String telNumber) {
+	public ProcessResult generateSmsCode(HttpServletRequest request,
+			HttpServletResponse response, String telNumber) {
 
 		ArdLog.debug(logger, "enter generateSmsCode", null, telNumber);
 
 		ProcessResult processResult = new ProcessResult();
 		String smsCode = "123456";
+		String clientType = request.getHeader("client");
+		if (clientType == null) {
 
-		// 将短信验证码保存到Session中。
-		Session session = SecurityUtils.getSubject().getSession();
-		session.setAttribute("smscode", smsCode);
+			// 将短信验证码保存到Session中。
+			Session session = SecurityUtils.getSubject().getSession();
+			session.setAttribute("smscode", smsCode);
+		} else {
+
+			redis.put(telNumber, smsCode);
+
+		}
+
 		processResult.setRetCode(0);
 		ArdLog.debug(logger, "finish generateSmsCode", null, "processResult: "
 				+ processResult);
@@ -85,17 +98,17 @@ public class AuthCodeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/authentication", method = RequestMethod.GET)
-	public ProcessResult authSmsCode(String smsCode) {
+	public ProcessResult authSmsCode(String telnum, String smsCode) {
 		ArdLog.info(logger, "enter authSmsCode", null, smsCode);
 
 		ProcessResult processResult = new ProcessResult();
-		Session session = SecurityUtils.getSubject().getSession();
-		String code = (String) session.getAttribute("smscode");
+		String code = (String) redis.get(telnum);
 
 		// 校验短信验证码是否正确
 		if (smsCode != null && smsCode.equals(code)) {
 			processResult.setRetCode(ProcessResult.SUCCESS);
 			processResult.setRetMsg("ok");
+			redis.remove(telnum);
 		} else {
 			processResult.setRetCode(ProcessResult.FAILED);
 			processResult.setRetMsg("failed");

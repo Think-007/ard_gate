@@ -116,7 +116,8 @@ public class GateController {
 			subject.login(token);
 
 			// 5.生成token
-			String loginToken = TokenUtil.generateToken(userRegistParam.getUserName());
+			String loginToken = TokenUtil.generateToken(userRegistParam
+					.getUserName());
 			userInfo.put("token", loginToken);
 			processResult.setRetCode(ProcessResult.SUCCESS);
 			processResult.setRetMsg("ok");
@@ -212,11 +213,61 @@ public class GateController {
 	 * @return
 	 */
 	@RequestMapping("/web_authentication")
-	public ModelAndView webLogin(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public ModelAndView webLogin(HttpServletRequest request,
+			HttpServletResponse response, Model model) {
 
 		ModelAndView mv = new ModelAndView();
+		// 1、校验验证码
 
-		mv.setViewName("/admin/mainpage");
+		// 2、校验用户信息
+
+		try {
+			String msg = "";
+			String userName = request.getParameter("userName");
+			String password = request.getParameter("password");
+			System.out.println(userName);
+			System.out.println(password);
+			UsernamePasswordToken token = new UsernamePasswordToken(userName,
+					password);
+			token.setRememberMe(true);
+			Subject subject = SecurityUtils.getSubject();
+			try {
+				subject.login(token);
+				if (subject.isAuthenticated()) {
+
+					mv.addObject("retcode", "0");
+					mv.setViewName("/admin/mainpage");
+					return mv;
+				}
+				mv.addObject("retcode", "-1");
+				mv.setViewName("/home");
+
+			} catch (IncorrectCredentialsException e) {
+				msg = "登录密码错误. Password for account " + token.getPrincipal()
+						+ " was incorrect.";
+				mv.addObject("errorcode", ArdError.PASSWORD_ERROR + "");
+				mv.addObject("errordesc", msg);
+				System.out.println(msg);
+			} catch (DisabledAccountException e) {
+				msg = "帐号已被注销. The account for username "
+						+ token.getPrincipal() + " was disabled.";
+				mv.addObject("errorcode", ArdError.ACCOUNT_LOGOUT + "");
+				mv.addObject("errordesc", msg);
+				System.out.println(msg);
+			} catch (UnknownAccountException e) {
+				msg = "帐号不存在. There is no user with username of "
+						+ token.getPrincipal();
+				mv.addObject("errorcode", ArdError.USER_NOT_EXIST + "");
+				mv.addObject("errordesc", msg);
+				System.out.println(msg);
+			}
+
+		} catch (Throwable t) {
+			mv.addObject(ProcessResult.FAILED);
+			mv.addObject("errorcode", ArdError.EXCEPTION + "");
+			mv.addObject("errordesc", ArdError.EXCEPTION_MSG);
+			t.printStackTrace();
+		}
 		return mv;
 	}
 
@@ -224,6 +275,7 @@ public class GateController {
 	public void checkOut() {
 
 		SecurityUtils.getSubject().logout();
+		// app还要删除token
 
 	}
 

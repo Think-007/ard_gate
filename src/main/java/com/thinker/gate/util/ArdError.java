@@ -14,9 +14,9 @@ public class ArdError {
 	public static final int PASSWORD_ERROR = 10002;
 	// 用户被锁定
 	public static final int USER_LOCKED = 10004;
-	// 用户未实名
-	public static final int USER_NOT_AUTH = 10005;
 	// 用户注销
-	public static final int ACCOUNT_LOGOUT = 10006;
+	public static final int ACCOUNT_LOGOUT = 10005;
+	// 验证码错误
+	public static final int SMS_CODE_ERROR = 10006;
 
 }
