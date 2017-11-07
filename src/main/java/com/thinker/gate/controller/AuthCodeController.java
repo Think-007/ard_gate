@@ -79,7 +79,7 @@ public class AuthCodeController {
 	}
 
 	/**
-	 * 短信验证码校验
+	 * app注册时短信验证码校验
 	 * 
 	 * @param smsCode
 	 * @return

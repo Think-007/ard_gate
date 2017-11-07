@@ -40,6 +40,7 @@ import com.thinker.gate.domain.UserRegistParam;
 import com.thinker.gate.service.UserRegistService;
 import com.thinker.gate.util.ArdError;
 import com.thinker.gate.util.ArdLog;
+import com.thinker.gate.util.TokenUtil;
 
 import ch.qos.logback.classic.spi.ThrowableProxyVO;
 
@@ -114,6 +115,9 @@ public class GateController {
 			Subject subject = SecurityUtils.getSubject();
 			subject.login(token);
 
+			// 5.生成token
+			String loginToken = TokenUtil.generateToken(userRegistParam.getUserName());
+			userInfo.put("token", loginToken);
 			processResult.setRetCode(ProcessResult.SUCCESS);
 			processResult.setRetMsg("ok");
 			processResult.setRetObj(userInfo);
@@ -208,7 +212,7 @@ public class GateController {
 	 * @return
 	 */
 	@RequestMapping("/web_authentication")
-	public ModelAndView webLogin() {
+	public ModelAndView webLogin(HttpServletRequest request, HttpServletResponse response, Model model) {
 
 		ModelAndView mv = new ModelAndView();
 
