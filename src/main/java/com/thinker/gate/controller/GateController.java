@@ -59,8 +59,7 @@ import ch.qos.logback.classic.spi.ThrowableProxyVO;
 @RequestMapping("/gate")
 public class GateController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(GateController.class);
+	private static final Logger logger = LoggerFactory.getLogger(GateController.class);
 
 	// 随机盐值
 	@Value("${shiro.salt}")
@@ -79,142 +78,13 @@ public class GateController {
 
 	}
 
-	@RequestMapping("/registration")
-	@ResponseBody
-	public ProcessResult registUser(UserRegistParam userRegistParam) {
-		ArdLog.info(logger, "enter registUser ", null, "userRegistParam: "
-				+ userRegistParam);
-		ProcessResult processResult = new ProcessResult();
-
-		try {
-			// 1.校验参数
-
-			// 2.密码加盐
-
-			ArdLog.debug(logger, "registUser", null, "salt: " + saltStr
-					+ "hashIterations: " + hashIterations);
-			System.out.println(saltStr);
-			System.out.println(hashIterations);
-
-			Md5Hash mh = new Md5Hash(userRegistParam.getPassword(), saltStr,
-					hashIterations);
-			System.out.println(mh.toString());
-
-			// 3.创建用户,并绑定信息
-
-			ArdUserRole ardUserRole = new ArdUserRole();
-
-			Map userInfo = userRegistService.regitsUser(userRegistParam,
-					saltStr, ardUserRole);
-
-			// 4.shiro授权用户
-			UsernamePasswordToken token = new UsernamePasswordToken(
-					userRegistParam.getUserName(),
-					userRegistParam.getPassword());
-			token.setRememberMe(true);
-			Subject subject = SecurityUtils.getSubject();
-			subject.login(token);
-
-			// 5.生成token
-			String loginToken = TokenUtil.generateToken(userRegistParam
-					.getUserName());
-			userInfo.put("token", loginToken);
-			processResult.setRetCode(ProcessResult.SUCCESS);
-			processResult.setRetMsg("ok");
-			processResult.setRetObj(userInfo);
-		} catch (MySQLIntegrityConstraintViolationException e) {
-
-			processResult.setRetCode(ProcessResult.FAILED);
-			processResult.setRetMsg("failed");
-			processResult.setErrorCode(ArdError.NAME_REPEAT);
-			ArdLog.error(logger, "registUser error", null, null, e);
-			e.printStackTrace();
-		} catch (Throwable t) {
-			processResult.setRetCode(ProcessResult.FAILED);
-			processResult.setErrorCode(ArdError.EXCEPTION);
-			processResult.setErrorDesc(ArdError.EXCEPTION_MSG);
-			ArdLog.error(logger, "registUser error", null, null, t);
-			t.printStackTrace();
-		}
-		ArdLog.info(logger, "finish registUser ", null, "processresult: "
-				+ processResult);
-
-		return processResult;
-	}
-
-	/**
-	 * 实际的登录代码 如果登录成功，跳转至首页；登录失败，则将失败信息反馈对用户
-	 * 
-	 * @param request
-	 * @param model
-	 * @return
-	 * @throws IOException
-	 * @throws ServletException
-	 */
-	@RequestMapping(value = "/app_authentication")
-	@ResponseBody
-	public ProcessResult doLogin(HttpServletRequest request,
-			HttpServletResponse response, Model model) {
-
-		ProcessResult result = new ProcessResult();
-		try {
-			String msg = "";
-			String userName = request.getParameter("userName");
-			String password = request.getParameter("password");
-			System.out.println(userName);
-			System.out.println(password);
-			UsernamePasswordToken token = new UsernamePasswordToken(userName,
-					password);
-			token.setRememberMe(true);
-			Subject subject = SecurityUtils.getSubject();
-			try {
-				subject.login(token);
-				if (subject.isAuthenticated()) {
-
-					result.setRetCode(ProcessResult.SUCCESS);
-
-					return result;
-				}
-				result.setRetCode(ProcessResult.FAILED);
-
-			} catch (IncorrectCredentialsException e) {
-				msg = "登录密码错误. Password for account " + token.getPrincipal()
-						+ " was incorrect.";
-				result.setErrorCode(ArdError.PASSWORD_ERROR);
-				result.setErrorDesc(msg);
-				System.out.println(msg);
-			} catch (DisabledAccountException e) {
-				msg = "帐号已被注销. The account for username "
-						+ token.getPrincipal() + " was disabled.";
-				result.setErrorCode(ArdError.ACCOUNT_LOGOUT);
-				result.setErrorDesc(msg);
-				System.out.println(msg);
-			} catch (UnknownAccountException e) {
-				msg = "帐号不存在. There is no user with username of "
-						+ token.getPrincipal();
-				result.setErrorCode(ArdError.USER_NOT_EXIST);
-				result.setErrorDesc(msg);
-				System.out.println(msg);
-			}
-
-		} catch (Throwable t) {
-			result.setRetCode(ProcessResult.FAILED);
-			result.setErrorCode(ArdError.EXCEPTION);
-			result.setErrorDesc(ArdError.EXCEPTION_MSG);
-			t.printStackTrace();
-		}
-
-		return result;
-	}
-
 	/**
 	 * web端登录地址
 	 * 
 	 * @return
 	 */
 	@RequestMapping("/web_authentication")
-	public ModelAndView webLogin(HttpServletRequest request,
-			HttpServletResponse response, Model model) {
+	public ModelAndView webLogin(HttpServletRequest request, HttpServletResponse response, Model model) {
 
 		ModelAndView mv = new ModelAndView();
 		// 1、校验验证码
@@ -227,8 +97,7 @@ public class GateController {
 			String password = request.getParameter("password");
 			System.out.println(userName);
 			System.out.println(password);
-			UsernamePasswordToken token = new UsernamePasswordToken(userName,
-					password);
+			UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
 			token.setRememberMe(true);
 			Subject subject = SecurityUtils.getSubject();
 			try {
@@ -243,20 +112,17 @@ public class GateController {
 				mv.setViewName("/home");
 
 			} catch (IncorrectCredentialsException e) {
-				msg = "登录密码错误. Password for account " + token.getPrincipal()
-						+ " was incorrect.";
+				msg = "登录密码错误. Password for account " + token.getPrincipal() + " was incorrect.";
 				mv.addObject("errorcode", ArdError.PASSWORD_ERROR + "");
 				mv.addObject("errordesc", msg);
 				System.out.println(msg);
 			} catch (DisabledAccountException e) {
-				msg = "帐号已被注销. The account for username "
-						+ token.getPrincipal() + " was disabled.";
-				mv.addObject("errorcode", ArdError.ACCOUNT_LOGOUT + "");
+				msg = "帐号已被注销. The account for username " + token.getPrincipal() + " was disabled.";
+				mv.addObject("errorcode", ArdError.SMS_CODE_ERROR + "");
 				mv.addObject("errordesc", msg);
 				System.out.println(msg);
 			} catch (UnknownAccountException e) {
-				msg = "帐号不存在. There is no user with username of "
-						+ token.getPrincipal();
+				msg = "帐号不存在. There is no user with username of " + token.getPrincipal();
 				mv.addObject("errorcode", ArdError.USER_NOT_EXIST + "");
 				mv.addObject("errordesc", msg);
 				System.out.println(msg);
