@@ -1,4 +1,4 @@
-package com.thinker.gate.controller;
+package com.thinker.gate.common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

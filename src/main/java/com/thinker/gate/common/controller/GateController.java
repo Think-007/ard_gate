@@ -7,7 +7,7 @@
  * 2017年10月26日	| LPF 	| 	create the file                       
  */
 
-package com.thinker.gate.controller;
+package com.thinker.gate.common.controller;
 
 import java.io.IOException;
 import java.util.Map;
